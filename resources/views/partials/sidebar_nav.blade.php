@@ -3,9 +3,11 @@
     <li>
         <a href="{{route('home')}}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
     </li>
+    @can('view', User::class)
     <li>
-        <a href=""><i class="fa fa-fw fa fa-user"></i> Users</a>
+        <a href="{{route('users.index')}}"><i class="fa fa-fw fa fa-user"></i> Users</a>
     </li>
+    @endcan
     <li>
         <a href="{{route('companies.index')}}"><i class="fa fa-fw fa-building-o"></i> Companies</a>
     </li>

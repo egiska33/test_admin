@@ -31,7 +31,10 @@
                                     <td>{{$employee->name}}</td>
                                     <td>{{$employee->email}}</td>
                                     <td>
+                                        @can('update', Employee::class)
                                         <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-default">Edit</a>
+                                        @endcan
+                                        @can('delete', Employee::class)
                                         <form action="{{ route('employees.destroy', $employee->id) }}" method="POST"
                                               style="display: inline"
                                               onsubmit="return confirm('Are you sure?');">
@@ -39,6 +42,7 @@
                                             {{ csrf_field() }}
                                             <button class="btn btn-danger">Delete</button>
                                         </form>
+                                        @endcan
                                     </td>
                                 </tr>
                             @empty
@@ -54,9 +58,11 @@
                         <li>
                             <i class="fa fa-dashboard"></i>  <a href="{{route('home')}}">Dashboard</a>
                         </li>
+                        @can('create', Employee::class)
                         <li>
                             <i class="fa fa-floppy-o" aria-hidden="true"></i> <a href="{{ route('employees.create') }}">Add New Emploeer</a>
                         </li>
+                        @endcan
                     </ol>
                 </div>
             </div>

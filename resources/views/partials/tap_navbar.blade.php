@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="../index.php">Visit home page</a>
+    <a class="navbar-brand" href="{{ route('home') }}">Site made by Laravel</a>
 </div>
 
 

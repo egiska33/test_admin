@@ -21,5 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::resource('companies', 'CompaniesController');
     Route::resource('employees', 'EmployeesController');
-    Route::get('user{id}', 'UsersController@show')->name('users.show');
+    Route::get('users{id}', 'UsersController@show')->name('users.show');
+    Route::get('users', 'UsersController@index')->name('users.index');
 });
