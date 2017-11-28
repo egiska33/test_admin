@@ -31,10 +31,10 @@
                             <td>{{$company->name}}</td>
                             <td>{{$company->address}}</td>
                                 <td>
-                                    @can('update', Companie::class)
+                                    @can('update', $company)
                                     <a href="{{ route('companies.edit', $company->id) }}" class="btn btn-default">Edit</a>
                                     @endcan
-                                    @can('delete', Companie::class)
+                                    @can('delete', $company)
                                     <form action="{{ route('companies.destroy', $company->id) }}" method="POST"
                                           style="display: inline"
                                           onsubmit="return confirm('Are you sure?');">
@@ -58,7 +58,7 @@
                     <li>
                         <i class="fa fa-dashboard"></i>  <a href="{{route('home')}}">Dashboard</a>
                     </li>
-                    @can('create', Companie::class)
+                    @can('create', $company)
                     <li>
                         <i class="fa fa-floppy-o" aria-hidden="true"></i><a href="{{ route('companies.create') }}">Add New Company</a>
                     </li>

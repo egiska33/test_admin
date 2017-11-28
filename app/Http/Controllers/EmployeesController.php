@@ -91,7 +91,7 @@ class EmployeesController extends Controller
      */
     public function update(StoreEmployeeRequest $request, $id)
     {
-        $this->authorize('update', E::class);
+        $this->authorize('update', Employee::class);
 
         $employee = Employee::findOrFail($id);
         $employee->update($request->all());
@@ -106,7 +106,7 @@ class EmployeesController extends Controller
      */
     public function destroy($id)
     {
-        $this->authorize('delete', Product::class);
+        $this->authorize('delete', Employee::class);
 
         $employee = Employee::findOrFail($id);
         $employee->delete();
