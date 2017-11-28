@@ -8,6 +8,9 @@
         <!-- Page Heading -->
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                @if (session('message'))
+                    <div class="alert alert-info">{{ session('message') }}</div>
+                @endif
                 <h1 class="page-header">
                     Companies
                     <small>Subheading</small>

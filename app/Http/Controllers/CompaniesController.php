@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Companie;
+use App\Employee;
 use App\Http\Requests\StoreCompanieRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CompaniesController extends Controller
 {
@@ -15,7 +17,7 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        $companies = Companie::paginate(9);
+        $companies = Companie::paginate(6);
         return view('companies.index', compact('companies'));
     }
 
@@ -93,7 +95,7 @@ class CompaniesController extends Controller
         $company->address=$request->address;
         $company->logo= basename($path);
         $company->update();
-        return redirect()->route('companies.index');
+        return redirect()->route('companies.index')->with(['message' => 'Company updated successfully']);
     }
 
     /**
@@ -104,6 +106,15 @@ class CompaniesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $numberOfEmployees = DB::table('employees')->where('company_id', $id)->count();
+
+        if($numberOfEmployees == 0){
+            $company = Companie::findOrFail($id);
+            $company->delete();
+            return redirect()->route('companies.index')->with(['message' => 'Company deleted successfully']);
+        } else {
+            return redirect()->route('companies.index')->with(['message' => 'Can not delete Company because this company has employees']);
+
+        }
     }
 }
