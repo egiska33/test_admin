@@ -27,10 +27,20 @@
                                     <td>{{$employee->company_id}}</td>
                                     <td>{{$employee->name}}</td>
                                     <td>{{$employee->email}}</td>
+                                    <td>
+                                        <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-default">Edit</a>
+                                        <form action="{{ route('employees.destroy', $employee->id) }}" method="POST"
+                                              style="display: inline"
+                                              onsubmit="return confirm('Are you sure?');">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            {{ csrf_field() }}
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="3" class="text-center">No entries found.</td>
+                                    <td colspan="4" class="text-center">No entries found.</td>
                                 </tr>
                             @endforelse
                             </tbody>

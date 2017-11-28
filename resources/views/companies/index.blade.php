@@ -27,6 +27,16 @@
                             <td>{{$company->logo}}</td>
                             <td>{{$company->name}}</td>
                             <td>{{$company->address}}</td>
+                                <td>
+                                    <a href="{{ route('companies.edit', $company->id) }}" class="btn btn-default">Edit</a>
+                                    <form action="{{ route('companies.destroy', $company->id) }}" method="POST"
+                                          style="display: inline"
+                                          onsubmit="return confirm('Are you sure?');">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        {{ csrf_field() }}
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
                         </tr>
                         @empty
                             <tr>
