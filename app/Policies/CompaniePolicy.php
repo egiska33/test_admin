@@ -30,7 +30,7 @@ class CompaniePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->role == 'admin';
     }
 
     /**
@@ -40,9 +40,9 @@ class CompaniePolicy
      * @param  \App\Companie  $companie
      * @return mixed
      */
-    public function update(User $user, Companie $companie)
+    public function update(User $user)
     {
-        //
+        return $user->role == 'admin';
     }
 
     /**
@@ -52,8 +52,8 @@ class CompaniePolicy
      * @param  \App\Companie  $companie
      * @return mixed
      */
-    public function delete(User $user, Companie $companie)
+    public function delete(User $user)
     {
-        //
+        return $user->role == 'admin';
     }
 }

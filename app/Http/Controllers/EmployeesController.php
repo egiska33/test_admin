@@ -27,6 +27,8 @@ class EmployeesController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Employee::class);
+
         $companies =Companie::all();
         return view('employees.create', compact('companies'));
     }
@@ -39,6 +41,8 @@ class EmployeesController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
+        $this->authorize('create', Employee::class);
+
         $employee = new Employee();
         $employee->name=$request->name;
         $employee->email=$request->email;
@@ -67,6 +71,8 @@ class EmployeesController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('update', Employee::class);
+
         $employee = Employee::findOrFail($id);
         $companies = Companie::all();
         return view('employees.edit')->with([
@@ -84,6 +90,8 @@ class EmployeesController extends Controller
      */
     public function update(StoreEmployeeRequest $request, $id)
     {
+        $this->authorize('update', Employee::class);
+
         $employee = Employee::findOrFail($id);
         $employee->update($request->all());
         return redirect()->route('employees.index')->with(['message' => 'Employee updated successfully']);
@@ -97,6 +105,8 @@ class EmployeesController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('delete', Product::class);
+
         $employee = Employee::findOrFail($id);
         $employee->delete();
         return redirect()->route('employees.index')->with(['message' => 'Employee deleted successfully']);

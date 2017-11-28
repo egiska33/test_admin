@@ -30,7 +30,7 @@ class EmployeePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->role == 'admin';
     }
 
     /**
@@ -40,9 +40,9 @@ class EmployeePolicy
      * @param  \App\Employee  $employee
      * @return mixed
      */
-    public function update(User $user, Employee $employee)
+    public function update(User $user)
     {
-        //
+        return $user->role == 'admin';
     }
 
     /**
@@ -52,8 +52,8 @@ class EmployeePolicy
      * @param  \App\Employee  $employee
      * @return mixed
      */
-    public function delete(User $user, Employee $employee)
+    public function delete(User $user)
     {
-        //
+        return $user->role == 'admin';
     }
 }

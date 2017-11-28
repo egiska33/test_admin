@@ -28,6 +28,8 @@ class CompaniesController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Companie::class);
+
         return view('companies.create');
     }
 
@@ -39,6 +41,8 @@ class CompaniesController extends Controller
      */
     public function store(StoreCompanieRequest $request)
     {
+        $this->authorize('create', Companie::class);
+
         $path = $request->file('logo')->store('public/image');
 
 
@@ -73,6 +77,8 @@ class CompaniesController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('update', Companie::class);
+
         $company = Companie::findOrFail($id);
         return view('companies.edit', compact('company'));
     }
@@ -86,6 +92,8 @@ class CompaniesController extends Controller
      */
     public function update(StoreCompanieRequest $request, $id)
     {
+        $this->authorize('update', Companie::class);
+
         $path = $request->file('logo')->store('public/image');
 
         $company = Companie::findOrFail($id);
@@ -106,6 +114,8 @@ class CompaniesController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('delete', Companie::class);
+
         $numberOfEmployees = DB::table('employees')->where('company_id', $id)->count();
 
         if($numberOfEmployees == 0){
