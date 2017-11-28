@@ -51,6 +51,9 @@
                         <li>
                             <i class="fa fa-dashboard"></i>  <a href="{{route('home')}}">Dashboard</a>
                         </li>
+                        <li>
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i> <a href="{{ route('employees.create') }}">Add New Emploeer</a>
+                        </li>
                     </ol>
                 </div>
             </div>
