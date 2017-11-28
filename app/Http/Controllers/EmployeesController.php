@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Companie;
 use App\Employee;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        return view('employees.create');
+        $companies =Companie::all();
+        return view('employees.create', compact('companies'));
     }
 
     /**
@@ -36,7 +38,13 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $employee = new Employee();
+        $employee->name=$request->name;
+        $employee->email=$request->email;
+        $employee->company_id= $request->company_id;
+
+        $employee->save();
+        return redirect()->route('employees.index')->with(['message' => 'Employee added successfully']);
     }
 
     /**
