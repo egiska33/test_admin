@@ -25,8 +25,8 @@
                         @forelse($companies as $company)
                             <tr>
                             <td>{{$company->logo}}</td>
-                            <td>{{$employee->name}}</td>
-                            <td>{{$employee->address}}</td>
+                            <td>{{$company->name}}</td>
+                            <td>{{$company->address}}</td>
                         </tr>
                         @empty
                             <tr>
@@ -35,6 +35,7 @@
                         @endforelse
                         </tbody>
                     </table>
+                    {{ $companies->links() }}
                 </div>
                 <ol class="breadcrumb">
                     <li>

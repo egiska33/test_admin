@@ -35,6 +35,7 @@
                             @endforelse
                             </tbody>
                         </table>
+                        {{ $employees->links() }}
                     </div>
                     <ol class="breadcrumb">
                         <li>
