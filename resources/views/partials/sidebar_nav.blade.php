@@ -1,16 +1,19 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
 <ul class="nav navbar-nav side-nav">
     <li>
-        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+        <a href="{{route('home')}}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
     </li>
     <li>
-        <a href=""><i class="fa fa-fw fa-bar-chart-o"></i> Users</a>
+        <a href=""><i class="fa fa-fw fa fa-user"></i> Users</a>
     </li>
     <li>
-        <a href=""><i class="fa fa-fw fa-table"></i> Companies</a>
+        <a href="{{route('companies.index')}}"><i class="fa fa-fw fa-building-o"></i> Companies</a>
     </li>
     <li>
-        <a href=""><i class="fa fa-fw fa-table"></i> Employess</a>
+        <a href="{{route('employees.index')}}"><i class="fa fa-fw fa-users"></i> Employess</a>
     </li>
 </ul>
 </div>
+
+</nav>
+
