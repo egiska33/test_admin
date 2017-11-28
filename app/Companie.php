@@ -9,4 +9,9 @@ class Companie extends Model
     protected $fillable = [
         'name', 'address'
     ];
+
+    public function employees()
+    {
+        return $this->hasMany('App\Employee');
+    }
 }

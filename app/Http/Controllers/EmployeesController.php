@@ -6,6 +6,7 @@ use App\Companie;
 use App\Employee;
 use App\Http\Requests\StoreEmployeeRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmployeesController extends Controller
 {
@@ -16,7 +17,7 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        $employees = Employee::paginate(9);
+        $employees = Employee::orderBy('company_id')->paginate(9);
         return view('employees.index', compact('employees'));
     }
 
@@ -90,7 +91,7 @@ class EmployeesController extends Controller
      */
     public function update(StoreEmployeeRequest $request, $id)
     {
-        $this->authorize('update', Employee::class);
+        $this->authorize('update', E::class);
 
         $employee = Employee::findOrFail($id);
         $employee->update($request->all());

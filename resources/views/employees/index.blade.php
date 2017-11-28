@@ -27,7 +27,7 @@
                             <tbody>
                             @forelse($employees as $employee)
                                 <tr>
-                                    <td>{{$employee->company_id}}</td>
+                                    <td>{{$employee->company->name}}</td>
                                     <td>{{$employee->name}}</td>
                                     <td>{{$employee->email}}</td>
                                     <td>
