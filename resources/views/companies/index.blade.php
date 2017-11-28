@@ -24,7 +24,7 @@
                         <tbody>
                         @forelse($companies as $company)
                             <tr>
-                            <td>{{$company->logo}}</td>
+                            <td><img src="/storage/image/{{$company->logo}}" class="img-responsive"></td>
                             <td>{{$company->name}}</td>
                             <td>{{$company->address}}</td>
                                 <td>
@@ -40,7 +40,7 @@
                         </tr>
                         @empty
                             <tr>
-                                <td colspan="3" class="text-center">No entries found.</td>
+                                <td colspan="4" class="text-center">No entries found.</td>
                             </tr>
                         @endforelse
                         </tbody>

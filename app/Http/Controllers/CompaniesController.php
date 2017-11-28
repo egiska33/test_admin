@@ -36,7 +36,19 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $path = $request->file('logo')->store('public/image');
+
+
+        $company = new Companie();
+        $company->name=$request->name;
+        $company->address=$request->address;
+        $company->logo= basename($path);
+
+        $company->save();
+
+        return redirect()->route('companies.index')->with(['message' => 'Company added successfully']);
+
+
     }
 
     /**
