@@ -3,7 +3,7 @@
     <li>
         <a href="{{route('home')}}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
     </li>
-    @can('view', User::class)
+    @can('view', Auth::user())
     <li>
         <a href="{{route('users.index')}}"><i class="fa fa-fw fa fa-user"></i> Users</a>
     </li>
