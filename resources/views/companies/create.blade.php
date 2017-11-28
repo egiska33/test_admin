@@ -8,6 +8,13 @@
                     <div class="panel-heading">Add New Company</div>
 
                     <div class="panel-body">
+                            @if ($errors->count() > 0)
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
                         <form action="{{ route('companies.store') }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             Name:

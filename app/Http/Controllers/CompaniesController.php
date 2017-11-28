@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Companie;
+use App\Http\Requests\StoreCompanieRequest;
 use Illuminate\Http\Request;
 
 class CompaniesController extends Controller
@@ -34,7 +35,7 @@ class CompaniesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCompanieRequest $request)
     {
         $path = $request->file('logo')->store('public/image');
 

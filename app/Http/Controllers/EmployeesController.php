@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Companie;
 use App\Employee;
+use App\Http\Requests\StoreEmployeeRequest;
 use Illuminate\Http\Request;
 
 class EmployeesController extends Controller
@@ -36,7 +37,7 @@ class EmployeesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEmployeeRequest $request)
     {
         $employee = new Employee();
         $employee->name=$request->name;

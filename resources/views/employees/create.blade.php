@@ -8,6 +8,13 @@
                     <div class="panel-heading">Add New Employee</div>
 
                     <div class="panel-body">
+                            @if ($errors->count() > 0)
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
                         <form action="{{ route('employees.store') }}" method="post">
                             {{ csrf_field() }}
                             Name:
