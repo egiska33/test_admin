@@ -67,7 +67,12 @@ class EmployeesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+        $companies = Companie::all();
+        return view('employees.edit')->with([
+            'employee'=> $employee,
+            'companies'=> $companies
+        ]);
     }
 
     /**
@@ -77,9 +82,11 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreEmployeeRequest $request, $id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+        $employee->update($request->all());
+        return redirect()->route('employees.index')->with(['message' => 'Employee updated successfully']);
     }
 
     /**

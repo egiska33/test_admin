@@ -71,7 +71,8 @@ class CompaniesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $company = Companie::findOrFail($id);
+        return view('companies.edit', compact('company'));
     }
 
     /**
@@ -81,9 +82,18 @@ class CompaniesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreCompanieRequest $request, $id)
     {
-        //
+        $path = $request->file('logo')->store('public/image');
+
+        $company = Companie::findOrFail($id);
+
+
+        $company->name=$request->name;
+        $company->address=$request->address;
+        $company->logo= basename($path);
+        $company->update();
+        return redirect()->route('companies.index');
     }
 
     /**
