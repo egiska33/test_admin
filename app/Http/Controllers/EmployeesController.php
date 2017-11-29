@@ -44,12 +44,7 @@ class EmployeesController extends Controller
     {
         $this->authorize('create', Employee::class);
 
-        $employee = new Employee();
-        $employee->name=$request->name;
-        $employee->email=$request->email;
-        $employee->company_id= $request->company_id;
-
-        $employee->save();
+        Employee::create($request->all());
         return redirect()->route('employees.index')->with(['message' => 'Employee added successfully']);
     }
 

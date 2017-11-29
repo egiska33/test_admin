@@ -122,6 +122,7 @@ class CompaniesController extends Controller
 
         $numberOfEmployees = DB::table('employees')->where('company_id', $id)->count();
 
+
         if($numberOfEmployees == 0){
             $company = Companie::findOrFail($id);
             $path = 'public/image/';
