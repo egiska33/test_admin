@@ -28,7 +28,7 @@
                             <br/><br/>
                             Company Logo:
                             <br/>
-                            <input type="file" name="logo"/>
+                            <input type="file" name="logo" value="pu"/>
                             <br/><br/>
                             <input type="submit" value="Submit" class="btn btn-default" />
                         </form>

@@ -99,6 +99,9 @@ class CompaniesController extends Controller
 
         $company = Companie::findOrFail($id);
 
+        $path_old = 'public/image/';
+        Storage::delete($path_old.$company->logo);
+
 
         $company->name=$request->name;
         $company->address=$request->address;
