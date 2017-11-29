@@ -7,6 +7,7 @@ use App\Employee;
 use App\Http\Requests\StoreCompanieRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CompaniesController extends Controller
 {
@@ -120,6 +121,8 @@ class CompaniesController extends Controller
 
         if($numberOfEmployees == 0){
             $company = Companie::findOrFail($id);
+            $path = 'public/image/';
+            Storage::delete($path.$company->logo);
             $company->delete();
             return redirect()->route('companies.index')->with(['message' => 'Company deleted successfully']);
         } else {
